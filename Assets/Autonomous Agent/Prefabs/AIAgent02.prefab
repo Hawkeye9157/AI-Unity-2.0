@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 8515921479550072946}
   - component: {fileID: 6185444443768502}
   - component: {fileID: 107939621185778230}
+  - component: {fileID: 1029278910169955379}
   m_Layer: 0
   m_Name: AIAgent02
   m_TagString: Agent02
@@ -642,7 +643,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Autonomous_Agent
   movement: {fileID: 6216832727929405940}
-  perception: {fileID: 8515921479550072946}
+  seekPerception: {fileID: 0}
+  fleePerception: {fileID: 8515921479550072946}
 --- !u!114 &6216832727929405940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f8bc035899ba74f9b1f9e47b04274e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicMovement
-  maxSpeed: 0.8
+  maxSpeed: 3
   maxForce: 1
 --- !u!114 &8515921479550072946
 MonoBehaviour:
@@ -671,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
   info: Flee
   tagName: Agent01
-  maxDistance: 0
+  maxDistance: 5
   maxAngle: 180
 --- !u!205 &6185444443768502
 LODGroup:
@@ -726,6 +728,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!64 &1029278910169955379
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477213613961847701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5523277661179574252, guid: f6ba3f6a030fdfb41bb3b15470242c58, type: 3}
 --- !u!1 &6824110873201717369
 GameObject:
   m_ObjectHideFlags: 0

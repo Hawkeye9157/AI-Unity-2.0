@@ -1,0 +1,34 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class AgentSpawner : MonoBehaviour
+{
+    [SerializeField] AI_Agent[] agents;
+    [SerializeField] LayerMask layerMask = Physics.AllLayers;
+
+    Camera activeCamera;
+    int agentIndex = 0;
+    void Start()
+    {
+        activeCamera = Camera.main;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Keyboard.current.tabKey.wasPressedThisFrame)
+        {
+            agentIndex++;
+            agentIndex = agentIndex % agents.Length;
+        }
+        if (Mouse.current.leftButton.wasPressedThisFrame ||
+     (Mouse.current.leftButton.IsPressed() && Keyboard.current.leftCtrlKey.isPressed))
+        {
+            Ray ray = activeCamera.ScreenPointToRay(Mouse.current.position.value);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 100.0f, layerMask))
+            {
+                Instantiate(agents[agentIndex], hitInfo.point, Quaternion.Euler(0, Random.Range(0, 360), 0));
+            }
+        }
+    }
+}
